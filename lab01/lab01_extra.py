@@ -7,19 +7,22 @@ def falling(n, k):
 
     >>> falling(6, 3)  # 6 * 5 * 4
     120
+    >>> falling(4, 0)
+    1
     >>> falling(4, 3)  # 4 * 3 * 2
     24
     >>> falling(4, 1)  # 4
     4
-    >>> falling(4, 0)
-    1
     """
-    "*** YOUR CODE HERE ***"
-    s = 1
-    while k > 0:
-        s *= n - k + 1
-        k -= 1
-    return s
+    "*** YOUR CODE HERE ***" 
+    fac = 1
+    if k == 0:
+        return 1
+    else:
+        while k > 0:
+            fac = fac * (n - k + 1)
+            k = k - 1
+        return fac
 
 
 def double_eights(n):
@@ -38,6 +41,13 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
-    return '88' in str(n)
-
+    while n > 0:
+        rem = n % 10
+        n = n // 10
+        if rem == 8:
+            if (n % 10) == 8:
+                return True 
+            else:
+                rem, n = n % 10, n // 10
+    return False
 
